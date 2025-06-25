@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab 自动完成 Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tab 自动完成功能演示</h1>
+            <p>在下面的文本框中输入内容，系统会实时预测您可能要输入的内容</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="autocomplete-input">请输入文本：</label>
+                <div class="input-wrapper">
+                    <div class="autocomplete-mirror" id="autocomplete-mirror"></div>
+                    <textarea 
+                        id="autocomplete-input" 
+                        placeholder="开始输入文本，系统会显示预测建议..."
+                        rows="8"
+                    ></textarea>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>使用说明：</h3>
+                <ul>
+                    <li>在文本框中输入内容，系统会实时分析并显示预测建议</li>
+                    <li>预测文本会以灰色字体显示在光标后面</li>
+                    <li>按 <kbd>Tab</kbd> 键接受预测建议</li>
+                    <li>如果没有预测或不想接受建议，按 <kbd>Tab</kbd> 键会正常输入制表符</li>
+                </ul>
+            </div>
+
+            <div class="examples-section">
+                <h3>示例输入（试试这些）：</h3>
+                <div class="example-buttons">
+                    <button class="example-btn" data-text="今天天气很">今天天气很</button>
+                    <button class="example-btn" data-text="我想学习">我想学习</button>
+                    <button class="example-btn" data-text="请帮我">请帮我</button>
+                    <button class="example-btn" data-text="谢谢你的">谢谢你的</button>
+                    <button class="example-btn" data-text="明天我要">明天我要</button>
+                </div>
+            </div>
+
+            <div class="status-section">
+                <div id="status" class="status"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
