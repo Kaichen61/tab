@@ -6,19 +6,19 @@ class TabAutocomplete {
         
         // 预测数据库 - 基于常见的中文短语和句子
         this.predictions = {
-            '今天天气很': ['温暖', '晴朗', '不错', '好'],
-            '今天天气很好': ['，我想去爬山。'],
-            '今天天气很好，': ['我想去爬山。'],
-            '今天天气很好，我想去爬山。': ['所以我需要去超市购物。'],
-            '今天天气很温暖，': ['我想去爬山。'],
-            '今天天气很晴朗，': ['我想去公园散步。'],
-            '今天天气很不错，': ['我想和朋友聚会。'],
-            '今天天气很好，': ['我想去爬山。'],
-            '我想去爬山。': ['所以我需要去超市购物。'],
-            '我想去爬山。所以我需要去超市购物。': ['我需要购买'],
-            '所以我需要去超市购物。': ['我需要购买'],
-            '我需要购买': ['水', '食物', '登山鞋', '背包'],
-            '我需要购买水': ['、食物'],
+            '智能键盘的十种': ['花样玩法。', '晴朗', '不错', '好'],
+            '花样玩法。': ['1.一键直达'],
+            '1.一键直达': [' AI 功能：'],
+            'AI 功能：': ['部分智能键盘'],
+            '部分智能键盘': ['如 K98M AI 客制化'],
+            '如 K98M AI 客制化': ['无线机械键盘，'],
+            '无线机械键盘，': ['右上角设有星星键，'],
+            '右上角设有星星键，': ['可一键直达 AI 软件'],
+            '可一键直达 AI 软件': [''],
+            '可一键直达 AI 软件': ['，如 "文心一言"，'],
+            '，如 "文心一言"，': ['辅助完成文案生成、'],
+            '辅助完成文案生成、': ['图片获取、翻译文本等任务，'],
+            '图片获取、翻译文本等任务，': ['为工作和创作提供便利。'],
             '我需要购买水、食物': ['、登山鞋'],
             '我需要购买水、食物、登山鞋': ['、背包'],
             '我需要购买水、食物、登山鞋、背包': ['。'],
@@ -156,25 +156,19 @@ class TabAutocomplete {
     acceptPrediction() {
         const text = this.input.value;
         const cursorPosition = this.input.selectionStart;
-        
         // 在光标位置插入预测文本
         const newText = text.substring(0, cursorPosition) + 
                        this.currentPrediction + 
                        text.substring(cursorPosition);
-        
         this.input.value = newText;
-        
         // 移动光标到预测文本后
         const newCursorPosition = cursorPosition + this.currentPrediction.length;
         this.input.setSelectionRange(newCursorPosition, newCursorPosition);
-        
         // 隐藏预测
         this.currentPrediction = '';
         this.isPredictionActive = false;
-        
         // 更新状态
         this.updateStatus(`已接受预测: "${this.currentPrediction}"`, 'success');
-        
         // 关键：补全后自动再次预测，直到没有预测为止
         setTimeout(() => {
             this.handleInput();
